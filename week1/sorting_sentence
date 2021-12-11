@@ -1,0 +1,27 @@
+class Solution(object):
+    def sortSentence(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        s_list= s.split();
+        
+        ## sorting s_list
+        for i in range(len(s_list)):
+            for j in range(len(s_list)-1):
+                
+                #get its
+                si1 = int(s_list[j][len(s_list[j]) -1])
+                si2 = int(s_list[j+1][len(s_list[j+1]) -1])
+                
+                if si2 < si1:
+                    #swap the
+                    temp = s_list[j]
+                    s_list[j] = s_list[j+1]
+                    s_list[j+1] = temp
+        
+        for i in range(len(s_list)):
+            s_list[i] = s_list[i][:len(s_list[i])-1]
+        
+        s =" ".join(s_list);
+        return s;
