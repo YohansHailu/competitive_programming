@@ -1,0 +1,14 @@
+class Solution(object):
+    def smallerNumbersThanCurrent(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[int]
+        """
+        s_nums = sorted(nums);
+        for i in range(len(nums)):
+            sIndex = s_nums.index(nums[i]);
+            while( sIndex>0 and s_nums[sIndex] == s_nums[sIndex-1] ):
+                sIndex-=1
+            nums[i] = sIndex
+            
+        return nums;
