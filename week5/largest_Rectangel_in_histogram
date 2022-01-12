@@ -1,0 +1,34 @@
+class Solution:
+    def largestRectangleArea(self, heights: List[int]) -> int:
+        
+        # constracting right_first_min
+        right_first_min = [len(heights)]*len(heights)
+        stack = []
+        for i in range(0,len(heights)):
+            while len(stack)>0 and heights[stack[-1]] > heights[i]:
+                poped_index = stack.pop()
+                print(poped_index)
+                right_first_min[ poped_index ] = i
+                
+            stack.append(i)
+        
+        # constracting left_first_min
+        left_first_min = [-1]*len(heights)
+        stak = []
+        for i in range(1,len(heights)):
+            index = len(heights) - i -1
+            while len(stack) > 0 and heights[stack[-1]] > heights[index]:
+                poped_index = stack.pop()
+                left_first_min[poped_index] = index
+            stack.append(index)
+
+        
+        # finding the answer
+        ans = heights[0];
+        for i in range(0,len(heights)):
+            w = right_first_min[i] - left_first_min[i] - 1
+            area = w * heights[i]
+            if area > ans:
+                ans = area
+                
+        return ans
