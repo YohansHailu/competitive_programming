@@ -1,9 +1,6 @@
 class Solution:
     def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
-        ## we have an answer
-        ##  heap with touple and index in the lists
-        ## we append and we go forthun push to heap
-        
+   
         minh = []
         for i in range(len(lists)):
             if lists[i] != None:
